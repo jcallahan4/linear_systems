@@ -210,10 +210,9 @@ def reg_vs_sparse():
         1. Convert A to CSR format and use scipy.sparse.linalg.spsolve()
         2. Convert A to a NumPy array and use scipy.linalg.solve().
 
-    In each experiment, only time how long it takes to solve the system (not
-    how long it takes to convert A to the appropriate format). Plot the system
-    size n**2 versus the execution times. As always, use log scales where
-    appropriate and use a legend to label each line.
+    In each experiment, we time how long it takes to solve the system (not
+    how long it takes to convert A to the appropriate format), then plot the s
+    ystem size n**2 versus the execution times. 
     """
     domain = 2**np.arange(1,7)
     start = 0
