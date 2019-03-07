@@ -1,8 +1,12 @@
 # linear_systems.py
-"""Volume 1: Linear Systems.
-<Name>
-<Class>
-<Date>
+"""
+Linear Systems
+Jake Callahan
+
+The fundamental problem of linear algebra is solving the linear system Ax = b,
+given that a solution exists. There are many approaches to solving this problem,
+each with different pros and cons. In this program we implement the LU decomposition
+and use it to solve square linear systems.
 """
 import numpy as np
 import scipy as sp
@@ -12,11 +16,9 @@ from scipy import linalg as la
 from scipy import sparse
 from scipy.sparse import linalg as spla
 
-# Problem 1
 def ref(A):
-    """Reduce the square matrix A to REF. You may assume that A is invertible
-    and that a 0 will never appear on the main diagonal. Avoid operating on
-    entries that you know will be 0 before and after a row operation.
+    """Reduce the square matrix A to REF. We assume that A is invertible
+    and that a 0 will never appear on the main diagonal.
 
     Parameters:
         A ((n,n) ndarray): The square invertible matrix to be reduced.
@@ -43,9 +45,8 @@ def ref(A):
             A[k,k] == 1
     return A
 
-# Problem 2
 def lu(A):
-    """Compute the LU decomposition of the square matrix A. You may
+    """Compute the LU decomposition of the square matrix A. We
     assume that the decomposition exists and requires no row swaps.
 
     Parameters:
@@ -71,7 +72,7 @@ def lu(A):
 # Problem 3
 def solve(A, b):
     """Use the LU decomposition and back substitution to solve the linear
-    system Ax = b. You may again assume that no row swaps are required.
+    system Ax = b. We again assume that no row swaps are required.
 
     Parameters:
         A ((n,n) ndarray)
@@ -104,8 +105,7 @@ def solve(A, b):
 
     return x
 
-# Problem 4
-def prob4():
+def time_scipy_solvers():
     """Time different scipy.linalg functions for solving square linear systems.
 
     For various values of n, generate a random nxn matrix A and a random
@@ -129,7 +129,6 @@ def prob4():
 
     domain = 2**np.arange(1, 13)
 
-    # 1)
     for n in domain:
         #create matrices
         A = np.random.random((n,n))
@@ -174,8 +173,7 @@ def prob4():
     ax1.legend(loc = 'upper left')
     plt.show()
 
-# Problem 5
-def prob5(n):
+def build_sparse(n):
     """Let I be the n × n identity matrix, and define
                     [B I        ]        [-4  1            ]
                     [I B I      ]        [ 1 -4  1         ]
@@ -202,9 +200,7 @@ def prob5(n):
 
     return A
 
-
-# Problem 6
-def prob6():
+def reg_vs_sparse():
     """Time regular and sparse linear system solvers.
 
     For various values of n, generate the (n**2,n**2) matrix A described of
